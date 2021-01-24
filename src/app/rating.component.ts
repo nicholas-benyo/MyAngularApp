@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component, Input} from '@angular/core';
 
 @Component({
   selector: 'rating',
@@ -37,12 +37,16 @@ import { Component} from '@angular/core';
     <ng-template #elseBlock>
       <starfill (click)="onClick(5)"></starfill>
     </ng-template>
-  `
+    {{ numOfReviews }}
+  `,
+  styles: [
+    'star {color: orange}', 'starfill{color:orange}'
+  ]
 })
 
 export class RatingComponent{
-  rating = 0;
-
+  @Input('rating') rating = 0;
+  @Input() numOfReviews = 0;
   // tslint:disable-next-line:typedef
   onClick(ratingValue){
     this.rating = ratingValue;
